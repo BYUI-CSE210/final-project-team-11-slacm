@@ -231,7 +231,7 @@ class Director(arcade.Window):
         """
         set the environment for level 2 of the game
         """
-        self.background = arcade.load_texture(PICTURES_PATH + "Crossing_Roa_background_starting_levels.PNG")
+        self.background = arcade.load_texture(PICTURES_PATH + "Crossing_Road_background_starting_levels.PNG")
         self._player = Player()
         print("Level two")
         self.coin = Coin()
