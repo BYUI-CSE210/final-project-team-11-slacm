@@ -13,6 +13,8 @@ RED = Color(255, 0, 0)
 YELLOW = Color(255, 255, 0)
 GREEN = Color(0, 255, 0)
 
+CAPTION = 'Frogger Clone'
+
 #lives
 LIFE_SPACING = 25
 LIFE_POSITION_START = 20

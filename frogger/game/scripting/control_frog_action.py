@@ -46,4 +46,4 @@ class ControlFrogAction(Action):
             self._direction = Point(0, constants.CELL_SIZE)
         
         frog = cast.get_first_actor("frogs")
-        frog.move_next(self._direction)
+        frog.move_next()
