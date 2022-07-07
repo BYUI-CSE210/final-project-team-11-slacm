@@ -1,8 +1,8 @@
 from game.shared.color import Color
 
 
-COLUMNS = 40
-ROWS = 20
+COLUMNS = 60
+ROWS = 40
 CELL_SIZE = 15
 MAX_X = 900
 MAX_Y = 600
@@ -19,3 +19,8 @@ CAPTION = 'Frogger Clone'
 LIFE_SPACING = 25
 LIFE_POSITION_START = 20
 LIFE_COUNT = 3
+
+#data for car spawning
+SPAWN_INTERVAL = 20 #decides how many frames in between each new car
+DIFFICULTY_INTERVAL = 1
+CAR_SIZE = 3 #this will require some playing with to implement properly

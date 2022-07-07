@@ -4,9 +4,10 @@ from game.casting.cast import Cast
 from game.casting.coin import Coin
 from game.casting.score import Score
 from game.casting.frog import Frog
-from game.casting.obstacle import Obstacle
+from game.casting.car import Car
 from game.scripting.script import Script
 from game.scripting.control_frog_action import ControlFrogAction
+from game.scripting.create_car_action import CreateCarAction
 from game.scripting.move_actors_action import MoveActorsAction
 from game.scripting.handle_collisions_action import HandleCollisionsAction
 from game.scripting.draw_actors_action import DrawActorsAction
@@ -23,8 +24,8 @@ def main():
     cast = Cast()
     cast.add_actor("coins", Coin())
     cast.add_actor("frogs", Frog())
-    cast.add_actor("obstacles", Obstacle())
     cast.add_actor("scores", Score())
+    cast.add_actor("cars", Car())
    
     # start the game
     keyboard_service = KeyboardService()
@@ -34,6 +35,7 @@ def main():
     script.add_action("input", ControlFrogAction(keyboard_service))
     script.add_action("update", MoveActorsAction())
     script.add_action("update", HandleCollisionsAction())
+    script.add_action("update", CreateCarAction())
     script.add_action("output", DrawActorsAction(video_service))
     
     director = Director(video_service)
