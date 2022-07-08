@@ -1,5 +1,6 @@
 import pyray
 from game.shared.point import Point
+import constants
 
 
 class KeyboardService:
@@ -42,3 +43,34 @@ class KeyboardService:
         """
         pyray_key = self._keys[key.lower()]
         return pyray.is_key_down(pyray_key)
+
+    def get_direction(self):
+        """Gets the selected direction based on the currently pressed keys.
+
+        Returns:
+            Point: The selected direction.
+        """
+
+        # This game we're only moving left and right so we're going to disable up and down
+
+        dx = 0
+        dy = 0
+
+        if pyray.is_key_down(pyray.KEY_LEFT):
+            dx = -1
+        
+        if pyray.is_key_down(pyray.KEY_RIGHT):
+            dx = 1
+        
+        
+        if pyray.is_key_down(pyray.KEY_UP):
+            dy = -1
+        
+        if pyray.is_key_down(pyray.KEY_DOWN):
+            dy = 1
+        
+
+        direction = Point(dx, dy)
+        direction = direction.scale(constants.CELL_SIZE)
+        
+        return direction

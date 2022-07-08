@@ -17,8 +17,6 @@ class Car(Actor):
         self.set_text("C")
         
 
-"""
-    def move_next(self):
 
-        pass
-    """
+
+    

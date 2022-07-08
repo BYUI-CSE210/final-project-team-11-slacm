@@ -20,7 +20,7 @@ class ControlFrogAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction = Point(constants.CELL_SIZE, 0)
+        self._direction = Point(0, 0)
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -28,6 +28,8 @@ class ControlFrogAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
+        """
+
         """
         # left
         if self._keyboard_service.is_key_down('a'):
@@ -45,5 +47,8 @@ class ControlFrogAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
         
+        """
+
+        self._direction = self._keyboard_service.get_direction()
         frog = cast.get_first_actor("frogs")
-        frog.move_next()
+        frog.set_velocity(self._direction)
