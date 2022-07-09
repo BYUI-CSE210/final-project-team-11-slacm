@@ -39,14 +39,21 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         score = cast.get_first_actor("scores")
-        coin = cast.get_first_actor("coins")
+        coins = cast.get_actors("coins")
         frog = cast.get_first_actor("frogs")
 
+        frog_x = frog.get_position().get_x()
+        frog_y = frog.get_position().get_y()
+        
+        for coin in coins:
 
-        if frog.get_position().equals(coin.get_position()):
-            points = coin.get_points()
-            score.add_points(points)
-            coin.reset()
+            coin_x = coin.get_position().get_x()
+            coin_y = coin.get_position().get_y()
+
+            if ((coin_x - constants.FONT_SIZE/2 < frog_x < coin_x + constants.FONT_SIZE/2) and (coin_y - constants.FONT_SIZE/2 < frog_y < coin_y + constants.FONT_SIZE/2)):
+                points = coin.get_points()
+                score.add_points(points)
+                coin.reset()
     
     def _handle_obstacle_collision(self, cast):
         """Sets the game over flag if the frog collides with one of the obstacles.
@@ -55,14 +62,6 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
 
-        """
-        frog = cast.get_first_actor("frogs")
-        car = cast.get_first_actor("cars")
-
-        if frog.get_position().equals(car.get_position()):
-                self._is_game_over = True
-        """
-        
     def _handle_game_over(self, cast):
         """Shows the 'game over' message if the game is over.
         
