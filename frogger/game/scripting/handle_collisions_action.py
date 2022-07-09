@@ -62,10 +62,34 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
 
+        
+        frog = cast.get_first_actor("frogs")
+        car = cast.get_first_actor("cars")
+        
+
+        if frog.get_position().equals(car.get_position()):
+            self._is_game_over = True
+        
+
+
     def _handle_game_over(self, cast):
         """Shows the 'game over' message if the game is over.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        pass
+        score = cast.get_first_actor("scores")
+        
+        if self._is_game_over:
+
+            x = int(constants.MAX_X / 2)
+            y = int(constants.MAX_Y / 2)
+            position = Point(x, y)
+
+            message = Actor()
+            message.set_text("Game Over!")
+            message.set_position(position)
+            cast.add_actor("messages", message)
+            
+            score.reset_points
+
