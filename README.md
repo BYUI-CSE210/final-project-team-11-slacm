@@ -27,10 +27,12 @@ root                     (project root folder)
 ## Required Technologies
 * Python 3.8.0
 
-## Authors
+## Authors (members of the team)
 * George Blanchard
 * Ricardo Rivas
 * Alvaro Loran
+* Daniel Muzo
+* Shaira Silos
 
 
 TO - DO LIST
