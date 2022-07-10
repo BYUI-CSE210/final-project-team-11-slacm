@@ -1,20 +1,36 @@
+import constants
+from game.shared.point import Point
+from game.casting.actor import Actor
 
-from game.constants import LIFE_SPACING, LIFE_POSITION_START, LIFE_COUNT
 
-class Lives:
-    """
-    A game booster that gives the player more chances to win all levels
-    stereotype: information holder, life creator
-    attributes: 
-                self.center_x: positioning on the x axis
-                self.center_y: positioning on the y axis
-    """
-    def __init__(self, center_x):
+
+class Lives(Actor):
+    def __init__(self):
+        super().__init__()
+        self._lifes = 0
+        self.add_lives(3)
+
+    def add_lives(self, lifes):
+        """Adds the given points to the score's total points.
+        
+        Args:
+            points (int): The points to add.
         """
-        class constructor for lives
-        args: 
-            center_x: parameter that defines where to place the lives on the grid.
+        self._lifes += lifes
+        self.set_text(f"Life: {self._lifes}")
+
+    def get_points(self):
+        """Sets points for the user
+
+        Returns:
+        ---
+            Integer: A point value for each player.
         """
-        super().__init__(":resources:images/enemies/mouse.png", 0.25)
-        self.center_x = center_x
-        self.center_y = 20
+        return self._lifes
+
+    def reduce_lives(self):
+        """Reduces points for the user"""
+        self._lifes -= 1
+        self.set_text(f"Lives: {self._lifes}")
+
+
