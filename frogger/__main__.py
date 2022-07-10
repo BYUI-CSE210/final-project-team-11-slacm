@@ -26,6 +26,7 @@ def main():
     cast.add_actor("frogs", Frog())
     cast.add_actor("scores", Score())
     cast.add_actor("cars", Car())
+    cast.add_actor("lives", Lives())
    
     # start the game
     keyboard_service = KeyboardService()
