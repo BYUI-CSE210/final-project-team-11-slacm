@@ -30,6 +30,7 @@ root                     (project root folder)
 ## Authors
 * George Blanchard
 * Ricardo Rivas
+* Alvaro Loran
 
 
 TO - DO LIST
