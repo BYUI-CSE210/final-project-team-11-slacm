@@ -1,6 +1,6 @@
 import constants
-from game.shared.point import Point
 from game.casting.actor import Actor
+from game.shared.point import Point
 
 
 
@@ -9,6 +9,9 @@ class Lives(Actor):
         super().__init__()
         self._lives = 0
         self.add_lives(3)
+        position = Point(0, 0)
+        self.set_position(position)
+        self.set_position(Point(constants.MAX_X - 50, 0))
 
     def add_lives(self, lives):
         """Adds the given lives to the total lives.
