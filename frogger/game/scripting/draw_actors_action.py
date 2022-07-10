@@ -30,11 +30,12 @@ class DrawActorsAction(Action):
         coin = cast.get_first_actor("coins")
         car = cast.get_actors("cars")
         frog = cast.get_first_actor("frogs")
-
+        live = cast.get_first_actor("lives")
 
         self._video_service.clear_buffer()
         self._video_service.draw_actor(coin)
         self._video_service.draw_actor(score)
         self._video_service.draw_actor(frog)
+        self._video_service.draw_actor(live)
         self._video_service.draw_actors(car)
         self._video_service.flush_buffer()
