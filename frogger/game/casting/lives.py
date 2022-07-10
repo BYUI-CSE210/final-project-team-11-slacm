@@ -7,30 +7,29 @@ from game.casting.actor import Actor
 class Lives(Actor):
     def __init__(self):
         super().__init__()
-        self._lifes = 0
+        self._lives = 0
         self.add_lives(3)
 
-    def add_lives(self, lifes):
-        """Adds the given points to the score's total points.
+    def add_lives(self, lives):
+        """Adds the given lives to the total lives.
         
         Args:
             points (int): The points to add.
         """
-        self._lifes += lifes
-        self.set_text(f"Life: {self._lifes}")
+        self._lives += lives
+        self.set_text(f"Life: {self._lives}")
 
     def get_points(self):
-        """Sets points for the user
-
+        """Sets lifes for the player
         Returns:
         ---
             Integer: A point value for each player.
         """
-        return self._lifes
+        return self._lives
 
     def reduce_lives(self):
-        """Reduces points for the user"""
-        self._lifes -= 1
-        self.set_text(f"Lives: {self._lifes}")
+        """Reduces lives for the player"""
+        self._lives -= 1
+        self.set_text(f"Lives: {self._lives}")
 
 
