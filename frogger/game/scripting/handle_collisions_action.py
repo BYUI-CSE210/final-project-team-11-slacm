@@ -92,8 +92,13 @@ class HandleCollisionsAction(Action):
         
 
         """
+ 
+        x = int(constants.MAX_X / 3)
+        y = int(constants.MAX_Y / 3)
+        position = Point(x, y)
         score = cast.get_first_actor("scores")
-
-        score.set_text(f"GAME OVER Score: {score._points}")
+        score.set_position(position)
+        score.set_font_size(50)
+        score.set_text(f"GAME OVER")
         
         
