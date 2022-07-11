@@ -15,6 +15,7 @@ class Frog(Actor):
     def __init__(self):
         super().__init__()
         self.set_text("F")
+        self.set_font_size(50)
         position = Point(int(constants.MAX_X / 2), int(constants.MAX_Y -constants.CELL_SIZE*2))
 
         #position = Point(constants.COLUMNS-1, constants.ROWS-1)

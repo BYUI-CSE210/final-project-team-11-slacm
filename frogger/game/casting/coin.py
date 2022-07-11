@@ -19,6 +19,7 @@ class Coin(Actor):
         self._points = 0
         self.set_text("O")
         self.set_color(constants.YELLOW)
+        self.set_font_size(50)
         self.reset()
         
     def reset(self):

@@ -1,13 +1,13 @@
 from game.shared.color import Color
 
 
-COLUMNS = 60
-ROWS = 40
-CELL_SIZE = 15
+COLUMNS = 30
+ROWS = 24
+CELL_SIZE = 35
 MAX_X = 900
 MAX_Y = 600
 FRAME_RATE = 15
-FONT_SIZE = 15
+FONT_SIZE = 35
 WHITE = Color(255, 255, 255)
 RED = Color(255, 0, 0)
 YELLOW = Color(255, 255, 0)

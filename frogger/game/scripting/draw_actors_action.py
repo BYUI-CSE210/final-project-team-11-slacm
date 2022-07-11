@@ -36,6 +36,6 @@ class DrawActorsAction(Action):
         self._video_service.draw_actor(coin)
         self._video_service.draw_actor(score)
         self._video_service.draw_actor(frog)
-        self._video_service.draw_actor(live)
+        # self._video_service.draw_actor(live)
         self._video_service.draw_actors(car)
         self._video_service.flush_buffer()

@@ -71,5 +71,5 @@ class CreateCarAction(Action):
         car.set_color(color)
         car.set_position(position)
         car.set_velocity(velocity)
-        #car.set_font_size(75) #this will require some playing with to do properly
+        car.set_font_size(50) 
         cast.add_actor("cars", car)
