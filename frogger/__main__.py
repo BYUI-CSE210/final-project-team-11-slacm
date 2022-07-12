@@ -4,6 +4,7 @@ from game.casting.cast import Cast
 from game.casting.coin import Coin
 from game.casting.score import Score
 from game.casting.frog import Frog
+from game.casting.lives import Lives
 from game.casting.car import Car
 from game.casting.lives import Lives
 from game.scripting.script import Script
