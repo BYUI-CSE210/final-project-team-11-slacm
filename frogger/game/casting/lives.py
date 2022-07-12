@@ -12,6 +12,9 @@ class Lives(Actor):
         position = Point(0, 0)
         self.set_position(position)
         self.set_position(Point(constants.MAX_X - 50, 0))
+      
+   
+        
 
     def add_lives(self, lives):
         """Adds the given lives to the total lives.
@@ -30,9 +33,15 @@ class Lives(Actor):
         """
         return self._lives
 
-    def reduce_lives(self):
+    def reduce_lives(self, lives):
         """Reduces lives for the player"""
-        self._lives -= 1
+        self._lives -= lives
         self.set_text(f"Lives: {self._lives}")
+ 
 
+    def reset_lives(self):
+        """Reset lives to 0.       
+        """
+
+        self._lives = 0
 
