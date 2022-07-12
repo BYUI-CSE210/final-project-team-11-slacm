@@ -63,8 +63,6 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-
-        
         
         cars = cast.get_actors("cars")
         frog = cast.get_first_actor("frogs")
@@ -77,7 +75,7 @@ class HandleCollisionsAction(Action):
             car_x = car.get_position().get_x()
             car_y = car.get_position().get_y()
 
-            if ((car_x - constants.FONT_SIZE/2 < frog_x < car_x + constants.FONT_SIZE/2) and (car_y - constants.FONT_SIZE/2 < frog_y < car_y + constants.FONT_SIZE/2)):
+            if ((car_x - constants.CELL_SIZE/2 < frog_x < car_x + constants.CAR_CELL_SIZE - constants.CELL_SIZE) and (car_y - constants.CELL_SIZE < frog_y < car_y + constants.CAR_CELL_SIZE)):
                 self._is_game_over = True
         
 

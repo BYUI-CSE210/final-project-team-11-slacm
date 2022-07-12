@@ -15,6 +15,8 @@ class Car(Actor):
     def __init__(self):
         super().__init__()
         self.set_text("C")
+        self.set_font_size(constants.CAR_CELL_SIZE)
+
 
     
 
