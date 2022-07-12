@@ -1,5 +1,7 @@
 import constants
 from game.scripting.action import Action
+from game.scripting.reset_game_action import ResetGameAction
+from game.services.keyboard_service import KeyboardService
 from game.shared.point import Point
 
 class HandleCollisionsAction(Action):
@@ -30,7 +32,7 @@ class HandleCollisionsAction(Action):
             self._handle_coin_collision(cast)
             self._handle_obstacle_collision(cast)
         else:
-            self._handle_game_over(cast)
+            self._handle_game_over(cast, script)
             
 
     def _handle_coin_collision(self, cast):
@@ -88,16 +90,11 @@ class HandleCollisionsAction(Action):
             if ((car_x - constants.CELL_SIZE/2 < frog_x < car_x + constants.CAR_CELL_SIZE - constants.CELL_SIZE) and (car_y - constants.CELL_SIZE < frog_y < car_y + constants.CAR_CELL_SIZE)):
                 self._is_game_over = True
         
-
-        
-
-
-    def _handle_game_over(self, cast):
+    def _handle_game_over(self, cast, script):
         """Shows the 'game over' message and the final score if the game is over.
         
         Args:
             cast (Cast): The cast of Actors in the game.
-        
 
         """
  
@@ -106,9 +103,27 @@ class HandleCollisionsAction(Action):
         position = Point(x, y)
         live = cast.get_first_actor("lives")
         lives = live.get_points()
-        live.reduce_lives(lives)
-        live.reset_lives()
+        live.reduce_lives()
+        
+        self._keyboard_service = KeyboardService()
+        if lives > 0:
+            live.set_position(position)
+            live.set_font_size(30)
+            live.set_text(f"{lives} lives left.\nPress Spacebar to Reset")
+            if self._keyboard_service.is_key_down(' '):
+                    reset = ResetGameAction()
+                    reset.execute(cast, script)
+                    self._is_game_over = False
         if lives == 0:
-         live.set_position(position)
-         live.set_font_size(50)
-         live.set_text(f"GAME OVER")
+            live.reset_lives()
+            live.set_position(position)
+            live.set_font_size(50)
+            live.set_text(f"GAME OVER")
+
+        
+
+        
+
+    
+        
+        
