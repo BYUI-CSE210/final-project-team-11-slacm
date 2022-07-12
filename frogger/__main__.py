@@ -4,6 +4,7 @@ from game.casting.cast import Cast
 from game.casting.coin import Coin
 from game.casting.score import Score
 from game.casting.frog import Frog
+from game.casting.lives import Lives
 from game.casting.car import Car
 from game.scripting.script import Script
 from game.scripting.control_frog_action import ControlFrogAction
@@ -26,7 +27,7 @@ def main():
     cast.add_actor("frogs", Frog())
     cast.add_actor("scores", Score())
     cast.add_actor("cars", Car())
-    # cast.add_actor("lives", Lives())
+    cast.add_actor("lives", Lives())
    
     # start the game
     keyboard_service = KeyboardService()
