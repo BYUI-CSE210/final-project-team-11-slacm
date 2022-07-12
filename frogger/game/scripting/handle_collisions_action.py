@@ -96,9 +96,15 @@ class HandleCollisionsAction(Action):
         x = int(constants.MAX_X / 3)
         y = int(constants.MAX_Y / 3)
         position = Point(x, y)
-        score = cast.get_first_actor("scores")
-        score.set_position(position)
-        score.set_font_size(50)
-        score.set_text(f"GAME OVER")
+        live = cast.get_first_actor("lives")
+        lives = live.get_points()
+        live.reduce_lives(lives)
+        live.reset_lives()
+        if lives == 0:
+         live.set_position(position)
+         live.set_font_size(50)
+         live.set_text(f"GAME OVER")
+
+    
         
         
