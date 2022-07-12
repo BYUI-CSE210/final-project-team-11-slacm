@@ -3,6 +3,7 @@ from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
 from game.casting.car import Car
+from game.casting.difficulty import Difficulty
 
 class HandleCollisionsAction(Action):
     """
@@ -13,11 +14,13 @@ class HandleCollisionsAction(Action):
 
     Attributes:
         _is_game_over (boolean): Whether or not the game is over.
-    """
+        _difficulty (Difficulty): An instance of Difficulty.
+ """
 
-    def __init__(self):
+    def __init__(self, difficulty):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
+        self._difficulty = difficulty
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -43,6 +46,7 @@ class HandleCollisionsAction(Action):
         score = cast.get_first_actor("scores")
         coins = cast.get_actors("coins")
         frog = cast.get_first_actor("frogs")
+        cars = cast.get_actors("cars")
 
         frog_x = frog.get_position().get_x()
         frog_y = frog.get_position().get_y()
@@ -56,6 +60,8 @@ class HandleCollisionsAction(Action):
                 points = coin.get_points()
                 score.add_points(points)
                 coin.reset()
+                self._difficulty.increase_difficulty()
+
     
     def _handle_obstacle_collision(self, cast):
         """Sets the game over flag if the frog collides with one of the obstacles.
@@ -75,6 +81,11 @@ class HandleCollisionsAction(Action):
             car_x = car.get_position().get_x()
             car_y = car.get_position().get_y()
 
+            #if car is off-screen, kill it
+            if car_x > constants.MAX_X + constants.CAR_CELL_SIZE or car_x < -constants.CAR_CELL_SIZE:
+                cast.remove_actor("cars", car)
+
+            #if car hits player, game over
             if ((car_x - constants.CELL_SIZE/2 < frog_x < car_x + constants.CAR_CELL_SIZE - constants.CELL_SIZE) and (car_y - constants.CELL_SIZE < frog_y < car_y + constants.CAR_CELL_SIZE)):
                 self._is_game_over = True
         

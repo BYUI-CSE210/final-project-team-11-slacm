@@ -20,12 +20,13 @@ class Coin(Actor):
         self.set_text("O")
         self.set_color(constants.YELLOW)
         self.reset()
+        self._diff_mod = 4
         
     def reset(self):
         """Selects a random position and points that the coin is worth."""
         self._points = random.randint(1, 8)
-        x = random.randint(6, constants.COLUMNS - 6)
-        y = random.randint(3, constants.ROWS - 3)
+        x = random.randint(8, constants.COLUMNS - 8)
+        y = random.randint(4, constants.ROWS - 4)
         position = Point(x, y)
         position = position.scale(constants.CELL_SIZE)
         self.set_position(position)
