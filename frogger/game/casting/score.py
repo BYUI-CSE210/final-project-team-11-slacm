@@ -31,3 +31,11 @@ class Score(Actor):
         """
 
         self.points = 0
+
+    def get_score (self):
+        """Gets the points the coin is worth.
+        
+        Returns:
+            points (int): The points earned in the game.
+        """
+        return self._points

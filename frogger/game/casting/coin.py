@@ -12,6 +12,7 @@ class Coin(Actor):
 
     Attributes:
         _points (int): The number of points the coin is worth.
+        _counter (int): The number of coins thus scored this game.
     """
     def __init__(self):
         "Constructs a new Coin."
@@ -20,7 +21,7 @@ class Coin(Actor):
         self.set_text("O")
         self.set_color(constants.YELLOW)
         self.reset()
-        self._diff_mod = 4
+        self._counter = 0
         
     def reset(self):
         """Selects a random position and points that the coin is worth."""
@@ -38,3 +39,15 @@ class Coin(Actor):
             points (int): The points the coin is worth.
         """
         return self._points
+
+    def get_counter(self):
+        """Gets The number of coins thus scored this game.
+        
+        Returns:
+            counter (int): The number of coins thus scored this game.
+        """
+        return self._counter
+
+    def add_counter(self):
+        """Upticks counter."""
+        self._counter += 1

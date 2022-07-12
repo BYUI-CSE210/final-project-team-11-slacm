@@ -1,9 +1,6 @@
 import constants
-from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
-from game.casting.car import Car
-from game.casting.difficulty import Difficulty
 
 class HandleCollisionsAction(Action):
     """
@@ -32,7 +29,6 @@ class HandleCollisionsAction(Action):
         if not self._is_game_over:
             self._handle_coin_collision(cast)
             self._handle_obstacle_collision(cast)
-            #self._handle_game_over(cast)
         else:
             self._handle_game_over(cast)
             
@@ -46,7 +42,7 @@ class HandleCollisionsAction(Action):
         score = cast.get_first_actor("scores")
         coins = cast.get_actors("coins")
         frog = cast.get_first_actor("frogs")
-        cars = cast.get_actors("cars")
+        lives = cast.get_first_actor("lives")
 
         frog_x = frog.get_position().get_x()
         frog_y = frog.get_position().get_y()
@@ -59,6 +55,9 @@ class HandleCollisionsAction(Action):
             if ((coin_x - constants.FONT_SIZE/2 < frog_x < coin_x + constants.FONT_SIZE/2) and (coin_y - constants.FONT_SIZE/2 < frog_y < coin_y + constants.FONT_SIZE/2)):
                 points = coin.get_points()
                 score.add_points(points)
+                coin.add_counter()
+                if coin.get_counter() % constants.COINS_PER_LIFE == 0:
+                    lives.add_lives(1)
                 coin.reset()
                 self._difficulty.increase_difficulty()
 
@@ -113,7 +112,3 @@ class HandleCollisionsAction(Action):
          live.set_position(position)
          live.set_font_size(50)
          live.set_text(f"GAME OVER")
-
-    
-        
-        
