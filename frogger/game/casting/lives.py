@@ -8,7 +8,7 @@ class Lives(Actor):
     def __init__(self):
         super().__init__()
         self._lives = 0
-        self.add_lives(3)
+        self.add_lives(1)
         position = Point(0, 0)
         self.set_position(position)
         self.set_position(Point(constants.MAX_X - 50, 0))
