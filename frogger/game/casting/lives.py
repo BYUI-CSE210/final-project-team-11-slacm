@@ -12,9 +12,7 @@ class Lives(Actor):
         position = Point(0, 0)
         self.set_position(position)
         self.set_position(Point(constants.MAX_X - 50, 0))
-      
-   
-        
+
 
     def add_lives(self, lives):
         """Adds the given lives to the total lives.

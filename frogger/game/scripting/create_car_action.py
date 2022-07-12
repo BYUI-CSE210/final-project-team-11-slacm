@@ -18,14 +18,15 @@ class CreateCarAction(Action):
 
     """
 
-    def __init__(self):
+    def __init__(self, difficulty):
         """Constructs a new CreateCarAction.
         
         Args:
         ---
              """
+        
+        self._difficulty = difficulty
         self._frame_counter = 0
-        self._frame_interval = constants.SPAWN_INTERVAL
 
     def execute(self, cast, script):
         """Executes the create car action.
@@ -36,7 +37,7 @@ class CreateCarAction(Action):
             script (Script): The script of Actions in the game.
         """
         self._frame_counter += 1
-        if self._frame_counter % self._frame_interval == 0:
+        if self._frame_counter % self._difficulty.get_timer() == 0:
             self._new_car(cast)
 
     def _new_car(self, cast):
@@ -46,24 +47,25 @@ class CreateCarAction(Action):
             cast (Cast): The cast of actors.
         """
 
+        speed = self._difficulty.get_velocity()
         #randomly set row
-        y = random.randint(1, constants.ROWS - 5) #from the top of the screen to just above the frog's start
+        y = random.randint(1, constants.CAR_ROWS - 2) #from the top of the screen to just above the frog's start
          
         #if even row, start left move right
         if y % 2 == 0:
             x = 1
-            velocity = Point(4, 0)
+            velocity = Point(speed, 0)
         #if odd row, start right move left
         else:
-            x = constants.COLUMNS - 1
-            velocity = Point(-4, 0)
+            x = constants.CAR_COLUMNS - 1
+            velocity = Point(-speed, 0)
 
         position = Point(x, y)
-        position = position.scale(constants.CELL_SIZE)
+        position = position.scale(constants.CAR_CELL_SIZE)
 
-        r = random.randint(0, 255)
-        g = random.randint(0, 255)
-        b = random.randint(0, 255)
+        r = random.randint(15, 255)
+        g = random.randint(15, 255)
+        b = random.randint(15, 255)
         color = Color(r, g, b)
 
         car = Car()
@@ -71,5 +73,4 @@ class CreateCarAction(Action):
         car.set_color(color)
         car.set_position(position)
         car.set_velocity(velocity)
-        car.set_font_size(50) 
         cast.add_actor("cars", car)

@@ -1,7 +1,5 @@
 import constants
 from game.casting.actor import Actor
-from game.shared.point import Point
-
 
 class Car(Actor):
     """
@@ -15,10 +13,4 @@ class Car(Actor):
     def __init__(self):
         super().__init__()
         self.set_text("C")
-
-    
-
-
-
-
-    
+        self.set_font_size(constants.CAR_CELL_SIZE)
