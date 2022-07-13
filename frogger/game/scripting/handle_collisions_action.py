@@ -97,26 +97,35 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
 
         """
- 
-        x = int(constants.MAX_X / 3)
-        y = int(constants.MAX_Y / 3)
+        # Spacebar instruction position
+        x = int(constants.MAX_X / 3.5)
+        y = int(constants.MAX_Y / 2.5)
         position = Point(x, y) 
+
+        # Game over position
+        x_go = int(constants.MAX_X / 3)
+        y_go = int(constants.MAX_Y / 2.5) 
+        position_go = Point(x_go, y_go) 
+
         live = cast.get_first_actor("lives")
-        lives = live.get_points()
-        live.reduce_lives(-1)
-        
+        lives = live.get_points() 
+        lives -= 1
+
         self._keyboard_service = KeyboardService()
         if lives > 0:
             live.set_position(position)
             live.set_font_size(30)
-            live.set_text(f"{lives} lives left.\nPress Spacebar to Reset")
+            if lives == 1:
+                live.set_text(f"         {lives} LIFE LEFT     \nPress SPACEBAR to RESET")
+            elif lives > 1: 
+                live.set_text(f"         {lives} LIVES LEFT     \nPress SPACEBAR to RESET")
             if self._keyboard_service.is_key_down(' '):
                     reset = ResetGameAction()
                     reset.execute(cast, script)
                     self._is_game_over = False
         if lives == 0:
             live.reset_lives()
-            live.set_position(position)
+            live.set_position(position_go)
             live.set_font_size(50)
             live.set_text(f"GAME OVER")
 

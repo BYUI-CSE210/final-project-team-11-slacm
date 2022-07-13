@@ -49,7 +49,9 @@ class ResetGameAction(Action):
         live.set_position(Point(constants.MAX_X - 60, 0))
         live.set_position(Point(constants.MAX_X - 60, 0))
         lives = live.get_points()
+        lives -= 1
         live.set_font_size(15)
+        live.add_lives(-1)
         live.set_text(f"Lives: {lives}")
 
         
