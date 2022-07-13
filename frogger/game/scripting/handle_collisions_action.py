@@ -100,10 +100,10 @@ class HandleCollisionsAction(Action):
  
         x = int(constants.MAX_X / 3)
         y = int(constants.MAX_Y / 3)
-        position = Point(x, y)
+        position = Point(x, y) 
         live = cast.get_first_actor("lives")
         lives = live.get_points()
-        live.reduce_lives()
+        live.reduce_lives(-1)
         
         self._keyboard_service = KeyboardService()
         if lives > 0:
