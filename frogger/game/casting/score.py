@@ -1,5 +1,5 @@
 from game.casting.actor import Actor
-
+import constants
 
 class Score(Actor):
     """
@@ -11,9 +11,11 @@ class Score(Actor):
 
     Attributes:
         _points (int): The points earned in the game.
+        _threshold (int): The amount of points needed per additonal life earned.
     """
     def __init__(self):
         super().__init__()
+        self._threshold = constants.LIFE_THRESHOLD
         self._points = 0
         self.add_points(0)
 
@@ -39,3 +41,10 @@ class Score(Actor):
             points (int): The points earned in the game.
         """
         return self._points
+
+    def check_threshold (self):
+        if self._points >= self._threshold:
+            self._threshold += constants.LIFE_THRESHOLD
+            return True
+        else:
+            return False

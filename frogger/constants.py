@@ -19,11 +19,11 @@ CAPTION = 'Frogger Clone'
 LIFE_SPACING = 25
 LIFE_POSITION_START = 20
 LIFE_COUNT = 3
-COINS_PER_LIFE = 10
+LIFE_THRESHOLD = 100
 
 #data for car spawning
-STARTING_VELOCITY = 4
-SPAWN_INTERVAL = 20 #decides how many frames in between each new car
+STARTING_VELOCITY = 5
+SPAWN_INTERVAL = 24 #decides how many frames in between each new car
 DIFFICULTY_INCREASE = 0.2
 
 CAR_COLUMNS = 20

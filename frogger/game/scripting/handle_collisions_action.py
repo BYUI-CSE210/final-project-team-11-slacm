@@ -57,8 +57,7 @@ class HandleCollisionsAction(Action):
             if ((coin_x - constants.FONT_SIZE/2 < frog_x < coin_x + constants.FONT_SIZE/2) and (coin_y - constants.FONT_SIZE/2 < frog_y < coin_y + constants.FONT_SIZE/2)):
                 points = coin.get_points()
                 score.add_points(points)
-                coin.add_counter()
-                if coin.get_counter() % constants.COINS_PER_LIFE == 0:
+                if score.check_threshold() == True:
                     lives.add_lives(1)
                 coin.reset()
                 self._difficulty.increase_difficulty()

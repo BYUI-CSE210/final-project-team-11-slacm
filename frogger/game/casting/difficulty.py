@@ -26,4 +26,5 @@ class Difficulty:
 
     def increase_difficulty(self):
         self._velocity += self._increase
-        self._spawn_timer -= self._increase
+        if self._spawn_timer > 1:
+            self._spawn_timer -= self._increase
