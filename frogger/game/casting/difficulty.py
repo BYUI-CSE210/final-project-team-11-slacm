@@ -8,7 +8,9 @@ class Difficulty:
     The responsibility of Difficulty is to track the velocities and spawn speeds of the cars.
 
     Attributes:
-        _points (int): The number of points the coin is worth.
+        _velocity (Point): The speed and direction.
+        _spawn_timer (int): The number of frames in between each new car
+        _increase (float): The number to increment the difficulty setting of the game
         
     """
     def __init__(self):

@@ -5,6 +5,15 @@ from game.shared.point import Point
 
 
 class Lives(Actor):
+    """
+    The Lives points of the game
+    
+    The responsibility of Lives is to track the Life points of the game.
+
+    Attributes:
+        _lives (int): The life points of the game
+        
+    """
     def __init__(self):
         super().__init__()
         self._lives = 0
