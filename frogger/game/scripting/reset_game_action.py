@@ -35,13 +35,13 @@ class ResetGameAction(Action):
         for coin in coins:
             cast.remove_actor("coins", coin)
         for car in cars:
-            cast.remove_actor("cars", car)                     
-        
-        #recreate the frog, coins, cars      
+            cast.remove_actor("cars", car) 
+
+        #recreate the cast      
         cast.add_actor("coins", Coin())
         cast.add_actor("frogs", Frog())
         cast.add_actor("scores", Score())
-        cast.add_actor("cars", Car())
+        # cast.add_actor("cars", Car()) // removes the 'C' on top left of screen on game reset
         cast.add_actor("lives", Lives())
         
         position = Point(0, 0)
