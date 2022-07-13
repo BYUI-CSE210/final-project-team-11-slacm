@@ -23,6 +23,8 @@ class CreateCarAction(Action):
         
         Args:
         ---
+        _difficulty (Difficulty): An instance of the Difficulty class.
+        _frame_counter (int): The current frame number.
              """
         
         self._difficulty = difficulty
@@ -63,9 +65,9 @@ class CreateCarAction(Action):
         position = Point(x, y)
         position = position.scale(constants.CAR_CELL_SIZE)
 
-        r = random.randint(15, 255)
-        g = random.randint(15, 255)
-        b = random.randint(15, 255)
+        r = random.randint(25, 255)
+        g = random.randint(25, 255)
+        b = random.randint(25, 255)
         color = Color(r, g, b)
 
         car = Car()
