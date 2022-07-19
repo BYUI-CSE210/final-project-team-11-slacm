@@ -23,7 +23,7 @@ LIFE_THRESHOLD = 100
 
 #data for car spawning
 STARTING_VELOCITY = 5
-SPAWN_INTERVAL = 24 #decides how many frames in between each new car
+SPAWN_INTERVAL = 20 #decides how many frames in between each new car
 DIFFICULTY_INCREASE = 0.2
 
 CAR_COLUMNS = 20
