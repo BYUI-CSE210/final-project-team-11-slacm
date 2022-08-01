@@ -54,7 +54,7 @@ class HandleCollisionsAction(Action):
             coin_x = coin.get_position().get_x()
             coin_y = coin.get_position().get_y()
 
-            if ((coin_x - constants.FONT_SIZE/2 < frog_x < coin_x + constants.FONT_SIZE/2) and (coin_y - constants.FONT_SIZE/2 < frog_y < coin_y + constants.FONT_SIZE/2)):
+            if ((coin_x - constants.FONT_SIZE < frog_x < coin_x + constants.FONT_SIZE*2) and (coin_y - constants.FONT_SIZE < frog_y < coin_y + constants.FONT_SIZE*2)):
                 points = coin.get_points()
                 score.add_points(points)
                 if score.check_threshold() == True:

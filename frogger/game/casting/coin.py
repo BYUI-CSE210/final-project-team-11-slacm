@@ -20,14 +20,15 @@ class Coin(Actor):
         self.set_text("O")
         self.set_color(constants.YELLOW)
         self.reset()
+        self._font_size = constants.CELL_SIZE*2
         
     def reset(self):
         """Selects a random position and points that the coin is worth."""
         self._points = random.randint(1, 8)
-        x = random.randint(8, constants.COLUMNS - 8)
-        y = random.randint(4, constants.ROWS - 4)
+        x = random.randint(4, constants.COLUMNS/2 - 4)
+        y = random.randint(2, constants.ROWS/2 - 2)
         position = Point(x, y)
-        position = position.scale(constants.CELL_SIZE)
+        position = position.scale(constants.CELL_SIZE*2)
         self.set_position(position)
         
     def get_points(self):
